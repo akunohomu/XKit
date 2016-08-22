@@ -153,6 +153,12 @@ XKit.extensions.xkit_main = new Object({
 				} catch(e) {
 					XKit.console.add("Can't eval " + extension_id);
 				}
+				try {
+					if (typeof XKit.extensions[extension_id].preferences !== "undefined") {
+						XKit.extensions.xkit_main.load_extension_preferences(extension_id);
+					}
+				} catch(e) {
+				}
 				if (XKit.extensions.xkit_main.disabled_extensions === "") {
 					XKit.extensions.xkit_main.disabled_extensions = extension_id + "(not in frame)";
 				} else {
